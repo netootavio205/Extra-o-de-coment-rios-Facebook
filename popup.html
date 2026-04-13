@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="icons/icon32.png" alt="Instagram Comments Backup" class="logo-icon">
+                <h1>Backup de Comentários</h1>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Page Status -->
+            <div id="pageStatus" class="status-card">
+                <div class="status-icon">⏳</div>
+                <div class="status-text">
+                    <h3>Verificando página...</h3>
+                    <p>Validando post do Instagram</p>
+                </div>
+            </div>
+
+            <!-- Configuration Section -->
+            <div id="configSection" class="config-section" style="display: none;">
+                <div class="form-group">
+                    <label for="commentLimit">Número de comentários para capturar:</label>
+                    <select id="commentLimit" class="select-input">
+                        <option value="20">20 comentários</option>
+                        <option value="50" selected>50 comentários</option>
+                        <option value="100">100 comentários</option>
+                        <option value="200">200 comentários</option>
+                        <option value="custom">Personalizado...</option>
+                    </select>
+                    <input type="number" id="customLimit" class="custom-input" 
+                           placeholder="Insira o número" min="1" max="1000" style="display: none;">
+                </div>
+
+                <div class="action-buttons">
+                    <button id="scanBtn" class="btn btn-primary">
+                        <span class="btn-icon">🔍</span>
+                        Escanear Comentários
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scan Progress -->
+            <div id="scanProgress" class="progress-section" style="display: none;">
+                <div class="progress-header">
+                    <div class="spinner"></div>
+                    <h3>Escaneando comentários...</h3>
+                </div>
+                <div class="progress-details">
+                    <p id="progressText">Carregando comentários do Instagram...</p>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="results-header">
+                    <h3>Escaneamento Concluído!</h3>
+                    <div class="results-stats">
+                        <div class="stat animate-slide-up">
+                            <span class="stat-value" id="capturedCount">0</span>
+                            <span class="stat-label">Comentários</span>
+                        </div>
+                        <div class="stat animate-slide-up" style="animation-delay: 0.1s;">
+                            <span class="stat-value" id="scanTime">0s</span>
+                            <span class="stat-label">Duração</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="results-preview">
+                    <h4>Prévia</h4>
+                    <div id="previewList" class="preview-list"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="exportBtn" class="btn btn-secondary">
+                        <span class="btn-icon">📥</span>
+                        Exportar JSON
+                    </button>
+                    <button id="printBtn" class="btn btn-secondary">
+                        <span class="btn-icon">🖨️</span>
+                        <span>Acessar Relatório</span>
+                    </button>
+                    <button id="newScanBtn" class="btn btn-outline">
+                        <span class="btn-icon">🔄</span>
+                        Novo Escaneamento
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="errorSection" class="error-section" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h3>Erro</h3>
+                <p id="errorMessage">Algo deu errado</p>
+                <button id="retryBtn" class="btn btn-primary">Tentar Novamente</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-text">
+                <p>Funciona com Chrome e Edge</p>
+                <p class="version">v1.1.0</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

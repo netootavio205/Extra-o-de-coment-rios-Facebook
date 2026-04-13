@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Comentários do Instagram</title>
+    <link rel="stylesheet" href="report.css">
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <header class="report-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="icons/icon48.png" alt="Instagram Comments Backup" class="logo-img">
+                    <h1>Relatório de Backup de Comentários do Instagram</h1>
+                </div>
+                <div class="report-info">
+                    <div class="report-date" id="reportDate"></div>
+                    <div class="report-id" id="reportId"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Information -->
+        <section class="post-section">
+            <h2>Informações do Post</h2>
+            <div class="post-content">
+                <div class="post-image" id="postImage">
+                    <img id="postImageImg" src="" alt="Imagem do Post" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'no-image\'>Imagem não disponível</div>'">
+                </div>
+                <div class="post-details">
+                    <div class="post-url">
+                        <strong>URL do Post:</strong>
+                        <a href="" id="postUrl" target="_blank"></a>
+                    </div>
+                    <div class="post-author">
+                        <strong>Autor:</strong>
+                        <span id="postAuthor"></span>
+                    </div>
+                    <div class="post-caption">
+                        <strong>Legenda:</strong>
+                        <p id="postCaption">Sem legenda disponível</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scan Statistics -->
+        <section class="stats-section">
+            <h2>Estatísticas do Escaneamento</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalComments">0</div>
+                    <div class="stat-label">Comentários Capturados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="requestedLimit">0</div>
+                    <div class="stat-label">Limite Solicitado</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="scanDuration">0s</div>
+                    <div class="stat-label">Duração</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="scanStatus">Complete</div>
+                    <div class="stat-label">Status do Escaneamento</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments List -->
+        <section class="comments-section">
+            <h2>Comentários <span id="printSelectionCount" class="print-only"></span></h2>
+            <div class="comments-summary">
+                <div class="selection-controls">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="selectAll">
+                        <span class="checkmark"></span>
+                        Selecionar Tudo
+                    </label>
+                    <button id="clearSelection" class="btn-text">Limpar Seleção</button>
+                    <span class="selection-info"><span id="selectedCount">0</span> selecionados</span>
+                </div>
+                
+                <div class="pagination-controls">
+                    <label for="perPage">Por página:</label>
+                    <select id="perPage">
+                        <option value="25">25</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+
+                <div class="actions">
+                    <button id="printBtn" class="btn btn-print">
+                        🖨️ Imprimir Selecionados
+                    </button>
+                    <button id="downloadBtn" class="btn btn-download">
+                        📥 Exportar JSON
+                    </button>
+                </div>
+            </div>
+            
+            <div id="paginationTop" class="pagination-nav"></div>
+            <div class="comments-list" id="commentsList"></div>
+            <div id="paginationBottom" class="pagination-nav"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <div class="footer-content">
+                <p>Gerado pela Extensão Instagram Comments Backup v1.1.0</p>
+                <p>Gerado em <span id="footerDate"></span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="report.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Comments Backup",
+  "version": "1.1.0",
+  "description": "Export and print comments from Instagram posts with professional reports",
+  
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "unlimitedStorage",
+    "downloads",
+    "declarativeNetRequest"
+  ],
+  
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "https://instagram.com/*",
+    "https://*.cdninstagram.com/*",
+    "https://*.fbcdn.net/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://instagram.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Instagram Comments Backup",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["report.html"],
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://instagram.com/*"
+      ]
+    }
+  ]
+}
